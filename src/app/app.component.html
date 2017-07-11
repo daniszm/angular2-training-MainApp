@@ -1,8 +1,10 @@
+<app-auth></app-auth>
 <div class="container-fluid">
   <nav class="nav nav-tabs mt-2 mb-2">
-    <a class="nav-item nav-link" routerLink="items">items</a>
-    <a class="nav-item nav-link active" routerLink="workers">workers</a>
+    <a class="nav-item nav-link" routerLink="items" routerLinkActive="active">items</a>
+    <a class="nav-item nav-link" routerLink="workers" routerLinkActive="active">workers</a>
   </nav>
+  <router-outlet></router-outlet>
 </div>
 
-<router-outlet></router-outlet>
+

@@ -1,0 +1,37 @@
+<div class="card card-block">
+  <table *ngIf="items">
+    <thead>
+      <tr>
+        <th *ngFor="let head of items[0] | mapToIterable">
+          {{head != 'id' ? head : ''}}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items">
+        <td *ngFor="let key of item | mapToIterable">
+          <div [ngSwitch]="key">
+            <div *ngSwitchCase="'price'">
+              <input class="form-control" type="text" [value]="item[key]">
+            </div>
+            <div *ngSwitchCase="'imgSrc'">
+              <img [src]="item[key]" width="50">
+            </div>
+            <div *ngSwitchCase="'id'">
+
+            </div>
+            <div *ngSwitchDefault>
+              {{item[key]}}
+            </div>
+          </div>
+        </td>
+        <td>
+          <button class="btn btn-danger" (click)="remove(item.id)">Remove</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+</div>
+items: {{items}}
