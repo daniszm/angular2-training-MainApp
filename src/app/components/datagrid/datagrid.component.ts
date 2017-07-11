@@ -15,6 +15,9 @@ export class DatagridComponent implements OnInit {
   }
   constructor() { }
 
+  inputChange(){
+    console.log('ppp')
+  }
   ngOnInit() {
   }
 

@@ -12,7 +12,7 @@
         <td *ngFor="let key of item | mapToIterable">
           <div [ngSwitch]="key">
             <div *ngSwitchCase="'price'">
-              <input class="form-control" type="text" [value]="item[key]">
+              <input class="form-control" type="text" [value]="item[key]" (input)="inputChange()">
             </div>
             <div *ngSwitchCase="'imgSrc'">
               <img [src]="item[key]" width="50">
@@ -31,7 +31,4 @@
       </tr>
     </tbody>
   </table>
-
-
 </div>
-items: {{items}}

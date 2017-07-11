@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {CRUDServiceInterface} from "./crud.service.interface";
 import {Observable} from "rxjs/Observable";
-import {Http} from "@angular/http";
+import {Http, RequestOptions} from "@angular/http";
 import {Settings} from "../utils/settings";
 
 @Injectable()
@@ -10,7 +10,10 @@ export class ItemsService implements CRUDServiceInterface {
   constructor(private http:Http) { }
 
   fetch(filters?: any): Observable<any> {
-    return this.http.get(Settings.ITEMS_END_POINT);
+    const opts: RequestOptions = new RequestOptions();
+    opts.params = filters;
+
+    return this.http.get(Settings.ITEMS_END_POINT, opts);
   }
 
   add(item): Observable<any> {

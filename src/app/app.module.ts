@@ -14,6 +14,9 @@ import { AuthComponent } from './components/auth/auth.component';
 import {AuthService} from "./services/auth.service";
 import {FormsModule} from "@angular/forms";
 import {CORSXhr} from "./utils/cors-xhr";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import { AddItemComponent } from './components/add-item/add-item.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -23,15 +26,19 @@ import {CORSXhr} from "./utils/cors-xhr";
     DatagridComponent,
     SearchComponent,
     MapToIterablePipe,
-    AuthComponent
+    AuthComponent,
+    AddItemComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    NgbModule.forRoot(),
     HttpModule,
     RouterModule.forRoot([
       {path: 'items', component: ItemsComponent},
-      {path: 'workers', component: WorkersComponent}
+      {path: 'workers', component: WorkersComponent},
+      {path: 'register', component: RegisterComponent}
     ])
   ],
   providers: [

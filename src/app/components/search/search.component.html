@@ -1,1 +1,6 @@
-controls: {{controls}}
+
+<form #searchForm="ngForm">
+  <div class="form-group" *ngFor="let control of controls">
+    <input type="text" [name]="control" ngModel class="form-control" (input)="onInput(searchForm)">
+  </div>
+</form>

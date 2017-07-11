@@ -8,11 +8,17 @@ import {ItemsService} from "../../services/items.service";
 })
 export class ItemsComponent implements OnInit {
   items;
+  filters = {};
 
   constructor(private itemsService: ItemsService) { }
 
   ngOnInit() {
-this.fetchItems();
+    this.fetchItems();
+  }
+
+  updateFilters(filters) {
+    this.filters = {...this.filters, ...filters};
+    this.fetchItems();
   }
 
   removeItem(id){
@@ -27,7 +33,7 @@ this.fetchItems();
 
   private fetchItems() {
     this.itemsService
-      .fetch()
+      .fetch(this.filters)
       .subscribe((response) => {
         this.items = response.json().data;
       })
