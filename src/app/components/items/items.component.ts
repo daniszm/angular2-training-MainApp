@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ItemsService} from "../../services/items.service";
+import {Subject} from "rxjs/Subject";
 
 @Component({
   selector: 'app-items',
@@ -9,8 +10,16 @@ import {ItemsService} from "../../services/items.service";
 export class ItemsComponent implements OnInit {
   items;
   filters = {};
+  newItem: Subject<any> = new Subject();
 
-  constructor(private itemsService: ItemsService) { }
+  constructor(private itemsService: ItemsService) {
+    this.newItem.subscribe((data) => {
+      this.itemsService.add(data)
+        .subscribe((response)=>{
+          console.log(response.json);
+        });
+    })
+  }
 
   ngOnInit() {
     this.fetchItems();
@@ -29,6 +38,14 @@ export class ItemsComponent implements OnInit {
           this.fetchItems();
         })
     }
+  }
+
+  updateItem(item){
+    this.itemsService
+      .update(item)
+      .subscribe((data) => {
+
+      })
   }
 
   private fetchItems() {

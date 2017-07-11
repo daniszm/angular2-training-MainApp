@@ -9,14 +9,15 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 export class DatagridComponent implements OnInit {
   @Input() items: any[];
   @Output() removeEvent: EventEmitter<number> = new EventEmitter();
+  @Output() updateEvent: EventEmitter<number> = new EventEmitter();
 
   remove(id) {
     this.removeEvent.emit(id);
   }
   constructor() { }
 
-  inputChange(){
-    console.log('ppp')
+  inputChange(item){
+    this.updateEvent.emit(item)
   }
   ngOnInit() {
   }

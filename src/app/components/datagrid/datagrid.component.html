@@ -12,7 +12,10 @@
         <td *ngFor="let key of item | mapToIterable">
           <div [ngSwitch]="key">
             <div *ngSwitchCase="'price'">
-              <input class="form-control" type="text" [value]="item[key]" (input)="inputChange()">
+              <input class="form-control" type="text" [(ngModel)]="item[key]" (input)="inputChange(item)">
+            </div>
+            <div *ngSwitchCase="'phone'">
+              <input class="form-control" type="text" [(ngModel)]="item[key]" (input)="inputChange(item)">
             </div>
             <div *ngSwitchCase="'imgSrc'">
               <img [src]="item[key]" width="50">

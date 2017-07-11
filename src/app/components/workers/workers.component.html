@@ -1,3 +1,10 @@
-<p>
-  workers works!
-</p>
+<div class="row">
+  <div class="col-3">
+    <app-search [controls]="['name', 'phone']"></app-search>
+  </div>
+  <div class="col-9">
+    <app-datagrid (removeEvent)="removeItem($event)"
+                  (updateEvent)="updateItem($event)"
+                  [items]="workers"></app-datagrid>
+  </div>
+</div>

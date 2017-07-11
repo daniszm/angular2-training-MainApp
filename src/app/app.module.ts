@@ -17,6 +17,7 @@ import {CORSXhr} from "./utils/cors-xhr";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import { AddItemComponent } from './components/add-item/add-item.component';
 import { RegisterComponent } from './components/register/register.component';
+import {WorkersService} from "./services/workers.service";
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { RegisterComponent } from './components/register/register.component';
   providers: [
     ItemsService,
     AuthService,
+    WorkersService,
     {provide: BrowserXhr, useClass: CORSXhr}
   ],
   bootstrap: [AppComponent]

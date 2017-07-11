@@ -17,11 +17,11 @@ export class ItemsService implements CRUDServiceInterface {
   }
 
   add(item): Observable<any> {
-    return null;
+    return this.http.post(Settings.ITEMS_END_POINT, item);
   }
 
   update(item): Observable<any> {
-    return null;
+    return this.http.put(`${Settings.ITEMS_END_POINT}/${item.id}`, item)
   }
 
   remove(id): Observable<any> {

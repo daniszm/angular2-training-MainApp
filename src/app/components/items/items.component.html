@@ -3,7 +3,9 @@
     <app-search (filtersEvent)="updateFilters($event)" [controls]="['title', 'price']"></app-search>
   </div>
   <div class="col-9">
-    <app-add-item></app-add-item>
-    <app-datagrid (removeEvent)="removeItem($event)" [items]=items></app-datagrid>
+    <app-add-item [newItem]="newItem"></app-add-item>
+    <app-datagrid (removeEvent)="removeItem($event)"
+                  (updateEvent)="updateItem($event)"
+                  [items]=items></app-datagrid>
   </div>
 </div>
