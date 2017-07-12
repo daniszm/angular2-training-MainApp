@@ -16,7 +16,7 @@ export class WorkersService implements CRUDServiceInterface {
   }
 
   add(item): Observable<any> {
-    return null;
+    return this.http.post(Settings.WORKERS_END_POINT, item);
   }
 
   update(item): Observable<any> {

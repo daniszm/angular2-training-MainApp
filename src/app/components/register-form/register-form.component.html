@@ -1,0 +1,42 @@
+<div class="card card-block">
+
+  <div class="alert alert-info">
+    form value: {{registerForm.value | json}}
+    <br>
+    form valid: {{registerForm.valid}}
+  </div>
+
+  <form [formGroup]="registerForm">
+    <div class="form-control">
+      <input type="text"
+             formControlName="name"
+             class="form-control">
+    </div>
+    <div class="form-control">
+      <input type="number"
+             formControlName="phone"
+             class="form-control">
+      <div class="badge badge-danger">
+        {{registerForm.get('phone')?.errors | json}}
+      </div>
+    </div>
+    <div class="form-control">
+      <input type="date"
+             formControlName="birthDate"
+             class="form-control">
+    </div>
+    <div class="badge badge-danger">
+      {{registerForm.get('birthDate')?.errors | json}}
+    </div>
+
+    <div class="form-group" formGroupName="hobbies">
+      <label class="badge badge-info" *ngFor="let hobby of registerForm.get('hobbies')['controls'] | mapToIterable">
+        {{hobby}}
+        <input type="checkbox" [formControlName]="hobby">
+      </label>
+    </div>
+    <div class="badge badge-danger">
+      {{registerForm.get('hobbies')?.errors | json}}
+    </div>
+  </form>
+</div>

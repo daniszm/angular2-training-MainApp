@@ -12,12 +12,13 @@ import {BrowserXhr, HttpModule} from "@angular/http";
 import { MapToIterablePipe } from './pipes/map-to-iterable.pipe';
 import { AuthComponent } from './components/auth/auth.component';
 import {AuthService} from "./services/auth.service";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CORSXhr} from "./utils/cors-xhr";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import { AddItemComponent } from './components/add-item/add-item.component';
 import { RegisterComponent } from './components/register/register.component';
 import {WorkersService} from "./services/workers.service";
+import { RegisterFormComponent } from './components/register-form/register-form.component';
 
 @NgModule({
   declarations: [
@@ -29,17 +30,19 @@ import {WorkersService} from "./services/workers.service";
     MapToIterablePipe,
     AuthComponent,
     AddItemComponent,
-    RegisterComponent
+    RegisterComponent,
+    RegisterFormComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     NgbModule.forRoot(),
     HttpModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       {path: 'items', component: ItemsComponent},
       {path: 'workers', component: WorkersComponent},
-      {path: 'register', component: RegisterComponent}
+      {path: 'register-form', component: RegisterFormComponent}
     ])
   ],
   providers: [
