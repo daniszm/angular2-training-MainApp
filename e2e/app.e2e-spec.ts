@@ -48,9 +48,8 @@ describe('items view', () => {
     btnSendForm.click();
 
     searchByTitle.sendKeys(uniqueName);
+    browser.switchTo().alert().accept();
 
     browser.sleep(5000);
-
   })
-
 })

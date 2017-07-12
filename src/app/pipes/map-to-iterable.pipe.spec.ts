@@ -5,4 +5,10 @@ describe('MapToIterablePipe', () => {
     const pipe = new MapToIterablePipe();
     expect(pipe).toBeTruthy();
   });
+
+  it('should return array', () => {
+    const pipe = new MapToIterablePipe();
+    const result = pipe.transform({id: 1, name: "joe"});
+    expect(result).toEqual(['id', 'name']);
+  })
 });
