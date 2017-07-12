@@ -2,9 +2,34 @@
   <div class="col-3">
     <app-search (filtersEvent)="updateFilters($event)" [controls]="['title', 'price']"></app-search>
   </div>
+
   <div class="col-9">
-    <app-add-item [newItem]="newItem"></app-add-item>
+    <div class="row">
+      <div class="col-2">
+        <app-add-item *ngIf="authService.access" [newItem]="newItem"></app-add-item>
+      </div>
+      <div class="col-2">
+        {{filters|json}}
+        <select [(ngModel)]="filters.itemsPerPage" (change)="fetchItems()">
+          <option *ngFor="let opt of [2,5,10]">
+            {{opt}}
+          </option>
+        </select>
+      </div>
+      <div class="col-8">
+        <ngb-pagination [collectionSize]="total"
+                        [(page)]="filters.currentPage"
+                        [maxSize]="5"
+                        [rotate]="true"
+                        [ellipses]="false"
+                        [pageSize]="filters.itemsPerPage"
+                        (pageChange)="fetchItems()"
+                        [boundaryLinks]="true"></ngb-pagination>
+      </div>
+    </div>
+
     <app-datagrid (removeEvent)="removeItem($event)"
+                  [access]="authService.access"
                   (updateEvent)="updateItem($event)"
                   [items]=items></app-datagrid>
   </div>

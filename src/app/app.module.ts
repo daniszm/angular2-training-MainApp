@@ -19,6 +19,7 @@ import { AddItemComponent } from './components/add-item/add-item.component';
 import { RegisterComponent } from './components/register/register.component';
 import {WorkersService} from "./services/workers.service";
 import { RegisterFormComponent } from './components/register-form/register-form.component';
+import {SearchPipe} from "./pipes/search.pipe";
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { RegisterFormComponent } from './components/register-form/register-form.
     AuthComponent,
     AddItemComponent,
     RegisterComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

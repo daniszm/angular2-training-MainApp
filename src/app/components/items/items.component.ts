@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ItemsService} from "../../services/items.service";
 import {Subject} from "rxjs/Subject";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-items',
@@ -9,10 +10,15 @@ import {Subject} from "rxjs/Subject";
 })
 export class ItemsComponent implements OnInit {
   items;
-  filters = {};
+  total;
+  filters = {
+    currentPage: 1,
+    itemsPerPage: 10
+  };
+
   newItem: Subject<any> = new Subject();
 
-  constructor(private itemsService: ItemsService) {
+  constructor(private itemsService: ItemsService, public authService:AuthService) {
     this.newItem.subscribe((data) => {
       this.itemsService.add(data)
         .subscribe((response)=>{
@@ -48,11 +54,12 @@ export class ItemsComponent implements OnInit {
       })
   }
 
-  private fetchItems() {
+  fetchItems() {
     this.itemsService
       .fetch(this.filters)
       .subscribe((response) => {
         this.items = response.json().data;
+        this.total = response.json().total;
       })
   }
 }

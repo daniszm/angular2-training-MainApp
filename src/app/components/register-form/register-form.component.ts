@@ -53,7 +53,11 @@ export class RegisterFormComponent implements OnInit {
     })
   }
 
-
+  sendForm(){
+    if(this.registerForm.valid) {
+      console.log(this.registerForm.value)
+    }
+  }
 
   ngOnInit() {
   }

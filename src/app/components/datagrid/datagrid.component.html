@@ -1,3 +1,4 @@
+access2: {{access}}
 <div class="card card-block">
   <table *ngIf="items">
     <thead>
@@ -12,7 +13,7 @@
         <td *ngFor="let key of item | mapToIterable">
           <div [ngSwitch]="key">
             <div *ngSwitchCase="'price'">
-              <input class="form-control" type="text" [(ngModel)]="item[key]" (input)="inputChange(item)">
+              <input class="form-control" type="text" [disabled]="!access"  [(ngModel)]="item[key]" (input)="inputChange(item)">
             </div>
             <div *ngSwitchCase="'phone'">
               <input class="form-control" type="text" [(ngModel)]="item[key]" (input)="inputChange(item)">
@@ -29,7 +30,7 @@
           </div>
         </td>
         <td>
-          <button class="btn btn-danger" (click)="remove(item.id)">Remove</button>
+          <button class="btn btn-danger" [disabled]="!access" (click)="remove(item.id)">Remove</button>
         </td>
       </tr>
     </tbody>

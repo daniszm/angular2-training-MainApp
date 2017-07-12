@@ -1,10 +1,11 @@
 <div class="row">
   <div class="col-3">
-    <app-search [controls]="['name', 'phone']"></app-search>
+    <app-search [controls]="['name', 'phone']" (filtersEvent)="filters=$event"></app-search>
   </div>
   <div class="col-9">
+    f:{{filters|json}}
     <app-datagrid (removeEvent)="removeItem($event)"
                   (updateEvent)="updateItem($event)"
-                  [items]="workers"></app-datagrid>
+                  [items]="workers | search:filters"></app-datagrid>
   </div>
 </div>

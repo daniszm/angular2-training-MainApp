@@ -10,7 +10,7 @@ export class AuthComponent implements OnInit, AfterViewInit {
 
   @ViewChild('loginForm') loginForm;
 
-  constructor(private authService:AuthService) { }
+  constructor(public authService:AuthService) { }
 
   ngOnInit() {
   }
@@ -24,6 +24,9 @@ export class AuthComponent implements OnInit, AfterViewInit {
     } else {
       console.warn('form invalid');
     }
+  }
 
+  logOut(){
+    this.authService.logOut();
   }
 }
